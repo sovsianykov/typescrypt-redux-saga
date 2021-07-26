@@ -5,13 +5,15 @@ export const apiAction = {
     fetchStart() {
         return {type: ArticleActionTypes.FETCH_START};
     },
-    fetchSuccess(data:any) {
+    fetchSuccess(data:any[]) {
         return {type: ArticleActionTypes.FETCH_SUCCESS, payload: data};
     },
     errorMessage() {
-        return {type: ArticleActionTypes.FETCH_FAILURE}
+        return {type: ArticleActionTypes.FETCH_FAILURE,
+            payload:"Something vent wrong!"
+        }
     },
     fetchData (uri:string)  {
-        return {type: ArticleActionTypes.FETCH_DATA, url: `${BASE_URL}${uri}&format=json&page=5`}
+        return {type: ArticleActionTypes.FETCH_DATA, url: `${BASE_URL}${uri}`}
     }
 };
