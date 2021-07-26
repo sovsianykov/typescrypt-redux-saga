@@ -1,10 +1,10 @@
 import { apiAction } from "./actions";
 import {takeEvery,put, call } from 'redux-saga/effects'
 import axios from "axios";
-import { FETCH } from "./constants";
+import { ArticleActionTypes } from "./constants";
 
  export function* watchFetch() {
-    yield takeEvery( FETCH.DATA , fetchWorkerAsync )
+    yield takeEvery( ArticleActionTypes.FETCH_DATA , fetchWorkerAsync )
 }
 
 function* fetchWorkerAsync({ url  }) {

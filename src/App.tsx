@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch  } from "react-redux";
 import { apiAction } from './redux/actions'
+import { useTypesSelector } from "./hooks/useTypesSelector";
 
 
 function App() {
@@ -9,8 +10,10 @@ function App() {
   useEffect(()=>{
     dispatch(apiAction.fetchData("texas"));
   },[dispatch])
-  const state = useSelector((state) => state.apiReducer);
-  console.log(state)
+  const {list, loading, error} = useTypesSelector((state) => state.apiReducer);
+  console.log(list)
+  console.log(loading)
+  console.log(error)
 
   return (
     <div className="App">
