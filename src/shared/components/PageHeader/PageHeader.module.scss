@@ -1,0 +1,14 @@
+.pageHeader {
+  width: 100%;
+  height: 100px;
+  background: url('../../../assets/bgiTunes.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .title {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: .2rem ;
+    color: gold;
+  }
+}

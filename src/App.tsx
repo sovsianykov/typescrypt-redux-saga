@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { apiAction } from "./redux/actions";
 import { useTypesSelector } from "./hooks/useTypesSelector";
 import { Artist } from "./redux/constants";
+import PageHeader from "./shared/components/PageHeader/PageHeader";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(apiAction.fetchData("deep-purple"));
+    dispatch(apiAction.fetchData("absolute"));
   }, [dispatch]);
   const { list, loading, error } = useTypesSelector(
     (state) => state.apiReducer
@@ -33,6 +34,7 @@ function App() {
   console.log(list?.results);
   return (
     <div>
+      <PageHeader title='iTunes search'/>
       {list?.results.map((artist: Artist) => (
         <img src={artist.artworkUrl60} alt="art" key={artist.artistId} />
       ))}
