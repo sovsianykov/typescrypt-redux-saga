@@ -13,7 +13,7 @@ interface FetchStartAction {
 
 interface FetchSuccessAction {
     type: ArticleActionTypes.FETCH_SUCCESS;
-    payload : any[];
+    payload : any;
 }
 interface FetchFailure {
     type: ArticleActionTypes.FETCH_FAILURE;
@@ -29,10 +29,41 @@ export interface Artist {
     artistId: number;
     artistName: string;
     artistViewUrl: string;
-
+    artworkUrl30: string;
+    artworkUrl60: string;
+    artworkUrl100: string;
+    collectionCensoredName: string;
+    collectionExplicitness: string;
+    collectionId: number;
+    collectionName: string;
+    collectionPrice: number;
+    collectionViewUrl: string;
+    country: string;
+    currency: string;
+    discCount: number;
+    discNumber: number;
+    isStreamable: boolean;
+    kind: string;
+    previewUrl: string;
+    primaryGenreName: string;
+    releaseDate: Date;
+    trackCensoredName: string;
+    trackCount: number;
+    trackExplicitness: string;
+    trackId: number;
+    trackName: string;
+    trackNumber: number;
+    trackPrice: number;
+    trackTimeMillis: number;
+    trackViewUrl: string;
+    wrapperType: string;
+}
+export interface List {
+    resultCount: number;
+    results: Artist[];
 }
 export interface ArticlesState {
-    list: any;
+    list: List | null ;
     loading: boolean;
     error: null | string;
 }

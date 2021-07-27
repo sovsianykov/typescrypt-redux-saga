@@ -10,7 +10,7 @@ import { ArticleActionTypes } from "./constants";
 function* fetchWorkerAsync({ url  }) {
        try {
            yield put(apiAction.fetchStart())
-           const data = yield call(()=>{
+           const data  = yield call(()=>{
                return axios.get(url)
                    .then(res =>res.data)
            });

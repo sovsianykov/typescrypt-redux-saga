@@ -1,8 +1,9 @@
 import { ArticlesAction, ArticleActionTypes, ArticlesState} from "./constants";
 
 
+
 const initialState: ArticlesState = {
-  list: [],
+  list: null,
   loading: false,
   error: null,
 };
@@ -15,7 +16,7 @@ function apiReducer(
   switch (action.type) {
     case ArticleActionTypes.FETCH_START:
       return {
-        list: [],
+        list: null,
         loading: true,
         error: null,
       };
@@ -27,7 +28,7 @@ function apiReducer(
       };
     case ArticleActionTypes.FETCH_FAILURE:
       return {
-        list: [],
+        list: null,
         loading: false,
         error: action.payload,
       };

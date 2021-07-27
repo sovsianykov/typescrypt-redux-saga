@@ -1,11 +1,11 @@
-import { BASE_URL, ArticleActionTypes  } from "./constants";
+import { BASE_URL, ArticleActionTypes, List } from "./constants";
 
 
 export const apiAction = {
     fetchStart() {
         return {type: ArticleActionTypes.FETCH_START};
     },
-    fetchSuccess(data:any[]) {
+    fetchSuccess(data: List) {
         return {type: ArticleActionTypes.FETCH_SUCCESS, payload: data};
     },
     errorMessage() {
