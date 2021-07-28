@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch } from "react-redux";
 import { apiAction } from "./redux/actions";
 import { useTypesSelector } from "./hooks/useTypesSelector";
 import { Artist } from "./redux/constants";
 import PageHeader from "./shared/components/PageHeader/PageHeader";
+import Form from "./shared/components/Form/Form";
+import {navTitles} from "./components/content";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
-  const dispatch = useDispatch();
+  const [searchWord, setSearchWord] = useState<string>('drum')
+  const [activeMenuId, setActiveMenuId] = useState<number>(1);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(apiAction.fetchData("absolute"));
-  }, [dispatch]);
+    dispatch(apiAction.fetchData(searchWord));
+  }, [dispatch, searchWord]);
   const { list, loading, error } = useTypesSelector(
     (state) => state.apiReducer
   );
@@ -22,6 +27,7 @@ function App() {
       <div>
         <h1>Loading...</h1>
       </div>
+
     );
   }
   if (error) {
@@ -35,8 +41,12 @@ function App() {
   return (
     <div>
       <PageHeader title='iTunes search'/>
-      {list?.results.map((artist: Artist) => (
-        <img src={artist.artworkUrl60} alt="art" key={artist.artistId} />
+      <Navigation items={navTitles} activeMenuId={activeMenuId} onClick={(id:number) =>setActiveMenuId(id)}    />
+
+      <h2>{searchWord}</h2>
+       <Form submit={(word:string)=>setSearchWord(word)}/>
+      {list?.results.map((artist: Artist,i) => (
+        <img src={artist.artworkUrl60} alt="art" key={`${artist.artistId}${i}`} />
       ))}
     </div>
   );

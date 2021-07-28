@@ -1,0 +1,31 @@
+.form {
+  width: 100%;
+  padding: 10px;
+  background: #031717;
+  color: gold;
+
+  .label {
+    padding: 0 5px;
+    font-size: 20px;
+    letter-spacing: .2rem;
+    .formInput {
+      margin: 0 5px;
+      width: 0;
+      background: #031717;
+      color: gold;
+      padding: 5px;
+      letter-spacing: .2rem;
+      ::-webkit-input-placeholder {color: gold;}
+      outline:solid 1px transparent;
+      border: none;
+      transition: .9s ease-in-out;
+      cursor: pointer;
+      &:focus, &:hover {
+        width: 200px;
+        background: #031717;
+        color: gold;
+        border-bottom: 1px solid gold;
+      }
+    }
+  }
+}

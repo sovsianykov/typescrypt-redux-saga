@@ -14,6 +14,6 @@ export const apiAction = {
         }
     },
     fetchData (uri:string)  {
-        return {type: ArticleActionTypes.FETCH_DATA, url: `${BASE_URL}${uri}`}
+        return {type: ArticleActionTypes.FETCH_DATA, url: `${BASE_URL}${uri}&limit=200&entity=album`}
     }
 };
