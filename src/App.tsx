@@ -7,6 +7,7 @@ import PageHeader from "./shared/components/PageHeader/PageHeader";
 import Form from "./shared/components/Form/Form";
 import {navTitles} from "./components/content";
 import Navigation from "./components/Navigation/Navigation";
+import Accordion from "./shared/components/Accordion/Accordion";
 
 function App() {
   const [searchWord, setSearchWord] = useState<string>('drum')
@@ -45,6 +46,7 @@ function App() {
 
       <h2>{searchWord}</h2>
        <Form submit={(word:string)=>setSearchWord(word)}/>
+       <Accordion items={list?.results} />
       {list?.results.map((artist: Artist,i) => (
         <img src={artist.artworkUrl60} alt="art" key={`${artist.artistId}${i}`} />
       ))}
