@@ -1,7 +1,7 @@
 import { Artist } from "../../../redux/constants";
 
 export interface Item {
-    item : Artist;
+    artist : Artist;
     active: boolean;
 }
 export interface AccordionProps {
@@ -10,17 +10,17 @@ export interface AccordionProps {
     // activeAccordionId: number;
 }
 export interface AccordionItemProps {
-    item: Artist;
-    selected : number;
+    item: Artist ;
     onClick: any;
-    id: number;
+    active: boolean;
+
+
 
 }
 export interface TitleProps {
     item: Artist;
-    selected : number;
     onClick: any;
-    id: number;
+    active: boolean
 }
 export interface ContentProps {
     item: Artist;

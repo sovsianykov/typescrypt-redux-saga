@@ -44,7 +44,7 @@ function App() {
       <PageHeader title='iTunes search'/>
       <Navigation items={navTitles} activeMenuId={activeMenuId} onClick={(id:number) =>setActiveMenuId(id)}    />
 
-      <h2>{searchWord}</h2>
+      <h2 style={{textAlign: "center", background: "#000",margin:"0"}}>{searchWord}</h2>
        <Form submit={(word:string)=>setSearchWord(word)}/>
        <Accordion items={list?.results} />
       {list?.results.map((artist: Artist,i) => (

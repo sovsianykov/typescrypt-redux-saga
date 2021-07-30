@@ -6,17 +6,17 @@ import Content from "./Content";
 import cn from "classnames"
 
 const AccordionItem:FunctionComponent<AccordionItemProps> = ({
-    item,onClick,selected,id
+    item,onClick, active
 }) => {
     const classNames = useMemo(() => 
         cn({
             [styles.content]:true,
-            [styles.content_show]: selected === id,
+            [styles.content_show]: active,
         })
-    ,[id, selected])
+    ,[active])
     return (
         <div className={styles.accordionItem}>
-            <Title item={item} selected={selected} onClick={onClick} id={id}/>
+            <Title item={item}  onClick={onClick} active={active} />
             <Content item={item} style={classNames}/>
         </div>
     );

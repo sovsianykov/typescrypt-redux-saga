@@ -21,11 +21,10 @@ const Accordion: FunctionComponent<AccordionProps> = ({
     },[selected])
     return (
         <section className={styles.accordion}>
-            {items&&items.map((item:Artist , i) => <AccordionItem
+            {items&&items.map((item: Artist , i) => <AccordionItem
               item={item} key={i}
-              selected={selected}
+              active ={selected === i }
               onClick={()=>handleClick(i)}
-              id={i}
             />)
                  }
         </section>

@@ -1,5 +1,6 @@
 .accordion {
-  width: 500px;
+  width: 800px;
+
   .accordionItem {
     background: #050000;
     margin-bottom: 5px;
@@ -16,11 +17,11 @@
       color: #f3c56c;
       max-height: 0 ;
       overflow: hidden;
-      transition: all 0.5s cubic-bezier(0,1,0,1);
+      transition: all  0.7s cubic-bezier(0, 1, 0, 1);
       &_show {
         height: auto;
-        max-height: 1000px;
-        transition: all 0.5s cubic-bezier(0,1,0,1);
+        max-height: 1500px;
+        transition:  0.7s ease-in-out;
       }
     }
   }
