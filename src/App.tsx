@@ -10,7 +10,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Accordion from "./shared/components/Accordion/Accordion";
 
 function App() {
-  const [searchWord, setSearchWord] = useState<string>('drum')
+  const [searchWord, setSearchWord] = useState<string>('notice')
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
 
   const dispatch = useDispatch();
@@ -40,16 +40,18 @@ function App() {
   }
   console.log(list?.results);
   return (
-    <div>
+    <div >
       <PageHeader title='iTunes search'/>
       <Navigation items={navTitles} activeMenuId={activeMenuId} onClick={(id:number) =>setActiveMenuId(id)}    />
 
       <h2 style={{textAlign: "center", background: "#000",margin:"0"}}>{searchWord}</h2>
-       <Form submit={(word:string)=>setSearchWord(word)}/>
-       <Accordion items={list?.results} />
-      {list?.results.map((artist: Artist,i) => (
-        <img src={artist.artworkUrl60} alt="art" key={`${artist.artistId}${i}`} />
-      ))}
+        <Form submit={(word:string)=>setSearchWord(word)}/>
+        <section className='appContainer'>
+           <Accordion items={list?.results} />
+           {list?.results.map((artist: Artist,i) => (
+               <img src={artist.artworkUrl60} alt="art" key={`${artist.artistId}${i}`} />
+           ))}
+       </section>
     </div>
   );
 }

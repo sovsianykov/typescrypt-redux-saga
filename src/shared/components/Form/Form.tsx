@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useState,
 } from "react";
+import searchIcon from "../../../assets/outline_search_white_24dp.png"
 import styles from "./Form.module.scss";
 
 interface FormProps {
@@ -31,7 +32,7 @@ const Form: FunctionComponent<FormProps> = ({ submit }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <label htmlFor="title" className={styles.label}>
-        search
+        SEARCH
         <input
           type="text"
           value={title}
