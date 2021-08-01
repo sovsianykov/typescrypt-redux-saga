@@ -1,13 +1,10 @@
-import { ArticlesAction, ArticleActionTypes, ArticlesState} from "./constants";
-
-
+import { ArticlesAction, ArticleActionTypes, ArticlesState } from "./constants";
 
 const initialState: ArticlesState = {
   list: null,
   loading: false,
   error: null,
 };
-
 
 function apiReducer(
   state = initialState,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, memo } from "react";
 import styles from "./Accordion.module.scss";
 import { TitleProps } from "./types";
 
@@ -12,4 +12,4 @@ const Title: FunctionComponent<TitleProps> = ({ item, onClick,active }) => {
   );
 };
 
-export default Title;
+export default memo(Title);

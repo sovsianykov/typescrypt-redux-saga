@@ -1,69 +1,75 @@
-export const BASE_URL2 = "https://chroniclingamerica.loc.gov/suggest/titles/?q=";
+export const BASE_URL2 =
+  "https://chroniclingamerica.loc.gov/suggest/titles/?q=";
 export const BASE_URL = "https://itunes.apple.com/search?term=";
 export enum ArticleActionTypes {
-    FETCH_START = "FETCH_START",
-    FETCH_SUCCESS = "FETCH_SUCCESS",
-    FETCH_FAILURE = "FETCH_FAILURE",
-    FETCH_DATA = "FETCH_DATA",
+  FETCH_START = "FETCH_START",
+  FETCH_SUCCESS = "FETCH_SUCCESS",
+  FETCH_FAILURE = "FETCH_FAILURE",
+  FETCH_DATA = "FETCH_DATA",
 }
+export const query = ["", "album", "musicVideo", "song", "software"];
 
 interface FetchStartAction {
-    type: ArticleActionTypes.FETCH_START;
+  type: ArticleActionTypes.FETCH_START;
 }
 
 interface FetchSuccessAction {
-    type: ArticleActionTypes.FETCH_SUCCESS;
-    payload : any;
+  type: ArticleActionTypes.FETCH_SUCCESS;
+  payload: any;
 }
 interface FetchFailure {
-    type: ArticleActionTypes.FETCH_FAILURE;
-    payload: string;
+  type: ArticleActionTypes.FETCH_FAILURE;
+  payload: string;
 }
 interface FetchData {
-    type: ArticleActionTypes.FETCH_DATA;
-    payload: string;
+  type: ArticleActionTypes.FETCH_DATA;
+  payload: string;
 }
 
-export type ArticlesAction = FetchStartAction | FetchSuccessAction | FetchFailure | FetchData
+export type ArticlesAction =
+  | FetchStartAction
+  | FetchSuccessAction
+  | FetchFailure
+  | FetchData;
 export interface Artist {
-    artistId: number;
-    artistName: string;
-    artistViewUrl: string;
-    artworkUrl30: string;
-    artworkUrl60: string;
-    artworkUrl100: string;
-    collectionCensoredName: string;
-    collectionExplicitness: string;
-    collectionId: number;
-    collectionName: string;
-    collectionPrice: number;
-    collectionViewUrl: string;
-    country: string;
-    currency: string;
-    discCount: number;
-    discNumber: number;
-    isStreamable: boolean;
-    kind: string;
-    previewUrl: string;
-    primaryGenreName: string;
-    releaseDate: Date;
-    trackCensoredName: string;
-    trackCount: number;
-    trackExplicitness: string;
-    trackId: number;
-    trackName: string;
-    trackNumber: number;
-    trackPrice: number;
-    trackTimeMillis: number;
-    trackViewUrl: string;
-    wrapperType: string;
+  artistId: number;
+  artistName: string;
+  artistViewUrl: string;
+  artworkUrl30: string;
+  artworkUrl60: string;
+  artworkUrl100: string;
+  collectionCensoredName: string;
+  collectionExplicitness: string;
+  collectionId: number;
+  collectionName: string;
+  collectionPrice: number;
+  collectionViewUrl: string;
+  country: string;
+  currency: string;
+  discCount: number;
+  discNumber: number;
+  isStreamable: boolean;
+  kind: string;
+  previewUrl: string;
+  primaryGenreName: string;
+  releaseDate: Date;
+  trackCensoredName: string;
+  trackCount: number;
+  trackExplicitness: string;
+  trackId: number;
+  trackName: string;
+  trackNumber: number;
+  trackPrice: number;
+  trackTimeMillis: number;
+  trackViewUrl: string;
+  wrapperType: string;
 }
 export interface List {
-    resultCount: number;
-    results: Artist[];
+  resultCount: number;
+  results: Artist[];
 }
 export interface ArticlesState {
-    list: List | null ;
-    loading: boolean;
-    error: null | string;
+  list: List | null;
+  loading: boolean;
+  error: null | string;
 }
