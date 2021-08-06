@@ -22,7 +22,7 @@
       transition: all .5s ease-in-out;
       cursor: pointer;
 
-      &:focus, &:hover {
+        &:hover {
         width: 200px;
         background: #031717;
         color: gold;
