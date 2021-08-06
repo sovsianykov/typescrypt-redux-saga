@@ -8,6 +8,7 @@ import Form from "./shared/components/Form/Form";
 import { navTitles } from "./components/content";
 import Navigation from "./components/Navigation/Navigation";
 import Accordion from "./shared/components/Accordion/Accordion";
+import Subtitle from "./shared/components/Subtile/Subtitle";
 
 function App() {
   const [searchWord, setSearchWord] = useState<string>("notice");
@@ -45,9 +46,8 @@ function App() {
         onClick={(id: number) => setActiveMenuId(id)}
       />
 
-      <h2 style={{ textAlign: "center", background: "#000", margin: "0" }}>
-        {searchWord}
-      </h2>
+        <Subtitle>{searchWord}</Subtitle>
+
       <section className="appContainer">
         <Form submit={(word: string) => setSearchWord(word)} />
         <Accordion items={list?.results} />
