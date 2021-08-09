@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { useDispatch } from "react-redux";
 import { apiAction } from "./redux/actions";
 import { useTypesSelector } from "./hooks/useTypesSelector";
@@ -9,10 +9,12 @@ import { navTitles } from "./components/content";
 import Navigation from "./components/Navigation/Navigation";
 import Accordion from "./shared/components/Accordion/Accordion";
 import Subtitle from "./shared/components/Subtile/Subtitle";
+import Paginator from "./shared/components/Paginator/Paginator";
 
 function App() {
   const [searchWord, setSearchWord] = useState<string>("notice");
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
+  const [activePAgeId, setActivePageId] = useState<number>(1);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,6 +39,10 @@ function App() {
     );
   }
 
+      const pageHandler = (id:number) =>{
+           setActivePageId(id)
+      }
+
   return (
     <div>
       <PageHeader title="iTunes search" />
@@ -49,7 +55,9 @@ function App() {
         <Subtitle>{searchWord}</Subtitle>
 
       <section className="appContainer">
+
         <Form submit={(word: string) => setSearchWord(word)} />
+          <Paginator totalItems={70} itemsPerPage={5} activePageIid={activePAgeId} onClick={(id)=> pageHandler(id)}/>
         <Accordion items={list?.results} />
         {list?.results.map((artist: Artist, i) => (
           <img
