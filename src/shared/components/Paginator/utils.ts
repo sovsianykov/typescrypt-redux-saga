@@ -1,4 +1,7 @@
+import {Artist} from "../../../redux/constants";
+
 export default  class Pages {
+    private static perPage: number;
     static paginatorSettings(total:number, perPage:number ) {
         let pages:number[] = [];
         const amount:number = Math.floor(total/perPage) + 2;
@@ -8,6 +11,20 @@ export default  class Pages {
         console.log(pages)
         return pages;
     }
+    static showingPages(array: any, perPage: number, activePageId: number) {
+        const currentMax:number = perPage*activePageId;
+        const currentMin:number = perPage*(activePageId-1);
+        let newArr = []
+        if (array ) {
+            for (let i = 1; i < array.length; i++) {
+                if (i > currentMin && i < currentMax) {
+                    newArr.push(array[i])
+                }
+            }
+        }
+        console.log(newArr)
+        return newArr
+    };
 }
 
 
