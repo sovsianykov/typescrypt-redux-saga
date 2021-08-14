@@ -13,7 +13,7 @@ import Paginator from "./shared/components/Paginator/Paginator";
 import Pages from "./shared/components/Paginator/utils";
 
 function App() {
-  const [searchWord, setSearchWord] = useState<string>("notice");
+  const [searchWord, setSearchWord] = useState<string>("please, input the word");
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
   const [activePAgeId, setActivePageId] = useState<number>(1);
   const [paginatorArray,setPaginatorArray] = useState<Artist[]>([])
@@ -27,7 +27,12 @@ function App() {
     (state) => state.apiReducer
   );
 
-  
+ const searchWordHolder=(word:string)=>{
+    setSearchWord(word);
+     setPaginatorArray(Pages.showingPages(list?.results,5, activePAgeId));
+ }
+
+
 
   if (loading) {
     return (
@@ -62,7 +67,7 @@ function App() {
 
       <section className="appContainer">
 
-        <Form submit={(word: string) => setSearchWord(word)} />
+        <Form submit={searchWordHolder} />
           <Paginator totalItems={70} itemsPerPage={5} activePageIid={activePAgeId} onClick={(id)=> pageHandler(id)}/>
         <Accordion items={paginatorArray} />
         { list ? paginatorArray.map((artist: Artist, i) => (
