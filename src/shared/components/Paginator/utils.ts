@@ -1,4 +1,3 @@
-import {Artist} from "../../../redux/constants";
 
 export default  class Pages {
     private static perPage: number;

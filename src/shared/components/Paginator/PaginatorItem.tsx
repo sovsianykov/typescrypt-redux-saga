@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useCallback, useContext, useMemo} from 'react';
+import React, {FunctionComponent, useCallback, useMemo} from 'react';
 import styles from "./Paginator.module.scss";
 import cn from "classnames";
 import {PaginatorItemProps} from "./Types";
