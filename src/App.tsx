@@ -13,7 +13,7 @@ import Paginator from "./shared/components/Paginator/Paginator";
 import Pages from "./shared/components/Paginator/utils";
 
 function App() {
-  const [searchWord, setSearchWord] = useState<string>("please, input the word");
+  const [searchWord, setSearchWord] = useState<string>("notice");
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
   const [activePAgeId, setActivePageId] = useState<number>(1);
   const [paginatorArray,setPaginatorArray] = useState<Artist[]>([])
@@ -29,8 +29,11 @@ function App() {
 
  const searchWordHolder=(word:string)=>{
     setSearchWord(word);
-     setPaginatorArray(Pages.showingPages(list?.results,5, activePAgeId));
  }
+ useEffect(()=>{
+   setPaginatorArray(Pages.showingPages(list?.results,6, activePAgeId));
+
+ },[activePAgeId, list?.results])
 
 
 
