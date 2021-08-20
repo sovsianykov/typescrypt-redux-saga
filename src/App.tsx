@@ -11,7 +11,7 @@ import Pages from "./shared/components/Paginator/utils";
 import useFetch from "./hooks/useFetch";
 
 function App() {
-  const [searchWord, setSearchWord] = useState<string>("");
+  const [searchWord, setSearchWord] = useState<string>("wave");
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
   const [activePAgeId, setActivePageId] = useState<number>(1);
   const [paginatorArray, setPaginatorArray] = useState<Artist[]>([]);
