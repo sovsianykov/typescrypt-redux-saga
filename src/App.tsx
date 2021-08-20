@@ -54,7 +54,7 @@ function App() {
 
       const pageHandler = (id:number) =>{
            setActivePageId(id);
-           setPaginatorArray(Pages.showingPages(list?.results,5, activePAgeId));
+           // setPaginatorArray(Pages.showingPages(list?.results,5, activePAgeId));
       }
       console.log(paginatorArray)
   return (
