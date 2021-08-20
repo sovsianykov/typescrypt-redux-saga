@@ -5,7 +5,7 @@ export interface PaginatorItemProps {
 }
 
 export interface PaginatorProps {
-    totalItems : number;
+    totalItems: any ;
     itemsPerPage : number;
     activePageIid : number;
     onClick: (id:number) => void;

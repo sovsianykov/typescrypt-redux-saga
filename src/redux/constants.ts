@@ -1,5 +1,5 @@
-export const BASE_URL2 =
-  "https://chroniclingamerica.loc.gov/suggest/titles/?q=";
+// export const BASE_URL2 =
+//   "https://chroniclingamerica.loc.gov/suggest/titles/?q=";
 export const BASE_URL = "https://itunes.apple.com/search?term=";
 export enum ArticleActionTypes {
   FETCH_START = "FETCH_START",
@@ -65,7 +65,7 @@ export interface Artist {
   wrapperType: string;
 }
 export interface List {
-  resultCount: number;
+  resultCount?: number;
   results: Artist[];
 }
 export interface ArticlesState {

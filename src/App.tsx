@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { apiAction } from "./redux/actions";
-import { useTypesSelector } from "./hooks/useTypesSelector";
 import { Artist } from "./redux/constants";
 import PageHeader from "./shared/components/PageHeader/PageHeader";
 import Form from "./shared/components/Form/Form";
@@ -11,31 +8,23 @@ import Accordion from "./shared/components/Accordion/Accordion";
 import Subtitle from "./shared/components/Subtile/Subtitle";
 import Paginator from "./shared/components/Paginator/Paginator";
 import Pages from "./shared/components/Paginator/utils";
+import useFetch from "./hooks/useFetch";
 
 function App() {
-  const [searchWord, setSearchWord] = useState<string>("notice");
+  const [searchWord, setSearchWord] = useState<string>("");
   const [activeMenuId, setActiveMenuId] = useState<number>(1);
   const [activePAgeId, setActivePageId] = useState<number>(1);
-  const [paginatorArray,setPaginatorArray] = useState<Artist[]>([])
+  const [paginatorArray, setPaginatorArray] = useState<Artist[]>([]);
 
-  const dispatch = useDispatch();
+    const { list, loading, error } = useFetch(searchWord, activeMenuId)
+
+  const searchWordHolder = (word: string) => {
+    setSearchWord(word);
+  };
 
   useEffect(() => {
-    dispatch(apiAction.fetchData(searchWord, activeMenuId));
-  }, [activeMenuId, dispatch, searchWord]);
-  const { list, loading, error } = useTypesSelector(
-    (state) => state.apiReducer
-  );
-
- const searchWordHolder=(word:string)=>{
-    setSearchWord(word);
- }
- useEffect(()=>{
-   setPaginatorArray(Pages.showingPages(list?.results,6, activePAgeId));
-
- },[activePAgeId, list?.results])
-
-
+    setPaginatorArray(Pages.showingPages(list?.results, 6, activePAgeId));
+  }, [activePAgeId, list?.results]);
 
   if (loading) {
     return (
@@ -52,11 +41,10 @@ function App() {
     );
   }
 
-      const pageHandler = (id:number) =>{
-           setActivePageId(id);
-           // setPaginatorArray(Pages.showingPages(list?.results,5, activePAgeId));
-      }
-      console.log(paginatorArray)
+  const pageHandler = (id: number) => {
+    setActivePageId(id);
+  };
+  console.log(list);
   return (
     <div>
       <PageHeader title="iTunes search" />
@@ -66,20 +54,26 @@ function App() {
         onClick={(id: number) => setActiveMenuId(id)}
       />
 
-        <Subtitle>{searchWord}</Subtitle>
+      <Subtitle>{searchWord}</Subtitle>
 
       <section className="appContainer">
-
         <Form submit={searchWordHolder} />
-          <Paginator totalItems={70} itemsPerPage={5} activePageIid={activePAgeId} onClick={(id)=> pageHandler(id)}/>
+        <Paginator
+          totalItems={list?.resultCount}
+          itemsPerPage={5}
+          activePageIid={activePAgeId}
+          onClick={(id) => pageHandler(id)}
+        />
         <Accordion items={paginatorArray} />
-        { list ? paginatorArray.map((artist: Artist, i) => (
-            <img
+        {list
+          ? paginatorArray.map((artist: Artist, i) => (
+              <img
                 src={artist.artworkUrl100}
                 alt="art"
                 key={`${artist.artistId}${i}`}
-            />
-        )):""}
+              />
+            ))
+          : ""}
       </section>
     </div>
   );

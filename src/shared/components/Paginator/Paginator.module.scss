@@ -1,11 +1,10 @@
 .paginator {
-  height: 40px;
-  display: flex;
   align-items: center;
   padding: 5px 10px;
   background: #0a0102;
   .item {
-    display: flex;
+    width: 20px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 4px;
