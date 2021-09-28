@@ -15,7 +15,7 @@ export interface AccordionItemProps {
 export interface TitleProps {
     item: Artist;
     onClick: () => void;
-    active: boolean
+    active: boolean;
 }
 export interface ContentProps {
     item: Artist;
